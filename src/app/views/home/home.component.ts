@@ -10,6 +10,8 @@ export class HomeComponent implements OnInit {
   searchWord: string = '';
   mustWatchVids: Video[] = [];
   allVideos: Video[] = [];
+  filteredVideos: Video[] = [];
+
   constructor(private videosService: VideoService) {}
 
   ngOnInit(): void {
@@ -23,6 +25,7 @@ export class HomeComponent implements OnInit {
           endDate: new Date(v.endDate),
         };
       });
+      this.filteredVideos = this.allVideos;
       this.mustWatchVids = this.filterMustWatchVideos(this.allVideos);
     });
   }
@@ -32,6 +35,13 @@ export class HomeComponent implements OnInit {
     sevenDays.setDate(sevenDays.getDate() + 7);
     return videos.filter(
       (vid) => vid.endDate.getTime() - sevenDays.getTime() < 0
+    );
+  }
+
+  filterBySearchWord() {
+    console.log(this.searchWord);
+    this.filteredVideos = this.allVideos.filter((vid) =>
+      vid.name.toLowerCase().includes(this.searchWord.trim().toLowerCase())
     );
   }
 }

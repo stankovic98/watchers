@@ -25,9 +25,10 @@
     class="search"
     placeholder="Enter name of the video..."
     [(ngModel)]="searchWord"
+    (ngModelChange)="filterBySearchWord()"
   />
   <section class="all-videos">
-    <div class="video" *ngFor="let vid of allVideos">
+    <div class="video" *ngFor="let vid of filteredVideos">
       <img
         [src]="'https://img.youtube.com/vi/' + vid.id + '/0.jpg'"
         alt="video thumbnail"
