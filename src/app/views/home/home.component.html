@@ -1,13 +1,18 @@
-<h1>Mandatory Videos</h1>
-<p>
-  Videos should be watched by the end of the week or the teacher will be
-  notified
-</p>
-<section class="mandatory-vids">
-  <div class="video" *ngFor="let vid of mustWatchVids">
-    <img
-      [src]="'https://img.youtube.com/vi/' + vid.id + '/0.jpg'"
-      alt="video thumbnail"
-    />
-  </div>
-</section>
+<main>
+  <h1>Mandatory Videos</h1>
+  <p class="subtitle">
+    Videos should be watched by the end of the week or the teacher will be
+    notified
+  </p>
+  <section class="mandatory-vids">
+    <div class="video" *ngFor="let vid of mustWatchVids">
+      <img
+        [src]="'https://img.youtube.com/vi/' + vid.id + '/0.jpg'"
+        alt="video thumbnail"
+      />
+      <div class="overlay">
+        <button>Watch</button>
+      </div>
+    </div>
+  </section>
+</main>
