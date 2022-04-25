@@ -9,6 +9,7 @@ import { HomeComponent } from './views/home/home.component';
 import { WatchingStationComponent } from './views/watching-station/watching-station.component';
 import { VideoService } from './services/video.service';
 import { FormsModule } from '@angular/forms';
+import { VideoComponent } from './components/video/video.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     HomeComponent,
     WatchingStationComponent,
+    VideoComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [VideoService],

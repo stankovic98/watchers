@@ -5,16 +5,7 @@
     notified
   </p>
   <section class="mandatory-videos">
-    <div class="video" *ngFor="let vid of mustWatchVids">
-      <img
-        [src]="'https://img.youtube.com/vi/' + vid.id + '/0.jpg'"
-        alt="video thumbnail"
-      />
-      <div class="overlay">
-        <p>{{ vid.name }}</p>
-        <button>Watch</button>
-      </div>
-    </div>
+    <app-video *ngFor="let video of mustWatchVids" [video]="video"></app-video>
   </section>
   <br />
   <hr />
@@ -28,15 +19,6 @@
     (ngModelChange)="filterBySearchWord()"
   />
   <section class="all-videos">
-    <div class="video" *ngFor="let vid of filteredVideos">
-      <img
-        [src]="'https://img.youtube.com/vi/' + vid.id + '/0.jpg'"
-        alt="video thumbnail"
-      />
-      <div class="overlay">
-        <p>{{ vid.name }}</p>
-        <button>Watch</button>
-      </div>
-    </div>
+    <app-video *ngFor="let video of filteredVideos" [video]="video"></app-video>
   </section>
 </main>
