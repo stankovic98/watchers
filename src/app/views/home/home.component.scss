@@ -19,7 +19,7 @@ h1 {
   margin-bottom: 2.5rem;
 }
 
-.mandatory-vids {
+.mandatory-videos {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
   grid-gap: 10px;
@@ -37,8 +37,6 @@ h1 {
 }
 
 .overlay {
-  //   position: relative;
-  //   top: 100%;
   display: grid;
   justify-items: center;
   align-items: center;
@@ -76,4 +74,22 @@ button:after {
   .overlay {
     transform: translateY(0%);
   }
+}
+
+input {
+  width: 60%;
+  margin: 3rem auto;
+  display: block;
+  padding: 10px 15px;
+  font-size: 1.8rem;
+  text-align: center;
+  color: #797979;
+  border: 1px solid #797979;
+  border-radius: 15px;
+}
+
+.all-videos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  grid-gap: 10px;
 }

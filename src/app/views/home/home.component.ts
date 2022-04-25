@@ -7,6 +7,7 @@ import { Video } from 'src/app/models/models';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  searchWord: string = '';
   mustWatchVids: Video[] = [];
   allVideos: Video[] = [];
   constructor(private videosService: VideoService) {}
