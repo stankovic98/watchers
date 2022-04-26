@@ -1,32 +1,41 @@
 main {
-    display: grid;
-    grid-template-columns: 65% auto auto 2fr;
-    grid-gap: 10px;
+  display: grid;
+  grid-template-columns: 65% auto auto 2fr;
+  grid-gap: 10px;
 }
 h1 {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 .small-button {
-    justify-self: end;
-    align-self: center;
+  justify-self: end;
+  align-self: center;
 }
 .done-button {
-    align-self: center;
+  align-self: center;
 }
 textarea {
-    grid-column: 2/ -1;
-    grid-row: span 2;
-    font-size: 1.6rem;
-    resize: none;
+  grid-column: 2/ -1;
+  grid-row: span 2;
+  font-size: 1.6rem;
+  resize: none;
 }
 
 .timestamps {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    button {
-        margin: 8px;
-        padding: 5px 8px;
-    }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  button {
+    margin: 8px;
+    padding: 5px 8px;
+  }
+}
+
+.instructions {
+  width: 70%;
+  p {
+    font-size: 1.8rem;
+    line-height: 2.3rem;
+    color: #3c3c3c;
+  }
 }
