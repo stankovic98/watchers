@@ -1,10 +1,11 @@
 <main>
     <h1>{{ video.name }}</h1>
-    <button><mat-icon>help_outline</mat-icon></button>
-    <button>DONE <mat-icon>forward_arrow</mat-icon></button>
+    <button class="small-button" routerLink=""><mat-icon>home</mat-icon></button>
+    <button class="small-button"><mat-icon>help_outline</mat-icon></button>
+    <button class="done-button">DONE <mat-icon>forward_arrow</mat-icon></button>
     <app-yt-player [videoID]="video.id"></app-yt-player>
-    <input type="textarea" placeholder="Enter your notes">
-    <div class="timestapms">
+    <textarea  placeholder="Enter your notes..." ></textarea>
+    <div class="timestamps">
         <button>when is he talking about roses</button>
         <button>talking about roses</button>
         <button>Theme are roses</button>
