@@ -1,1 +1,16 @@
-<p>watching-station works!</p>
+<main>
+    <h1>{{ video.name }}</h1>
+    <button><mat-icon>help_outline</mat-icon></button>
+    <button>DONE <mat-icon>forward_arrow</mat-icon></button>
+    <div #youTubePlayer class="player-container" >
+        <youtube-player [width]="videoWidth" [height]="videoHeight" [videoId]="video.id"></youtube-player>
+    </div>
+    <input type="textarea" placeholder="Enter your notes">
+    <div class="timestapms">
+        <button>when is he talking about roses</button>
+        <button>talking about roses</button>
+        <button>Theme are roses</button>
+        <button>Roses</button>
+        <button>about roses</button>
+    </div>
+</main>

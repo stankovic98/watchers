@@ -12,6 +12,7 @@ import { WatchingStationComponent } from './views/watching-station/watching-stat
 import { VideoService } from './services/video.service';
 import { FormsModule } from '@angular/forms';
 import { VideoComponent } from './components/video/video.component';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { VideoComponent } from './components/video/video.component';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    YouTubePlayerModule
   ],
   providers: [VideoService],
   bootstrap: [AppComponent],

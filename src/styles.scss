@@ -3,6 +3,15 @@
   font-family: "Inter";
   src: url("./assets/fonts/Inter.ttf");
 }
+main {
+  padding: 3rem 6rem;
+}
+
+h1 {
+  font-weight: 300;
+  font-family: "Inter";
+  letter-spacing: 0.105em;
+}
 
 button {
   background-color: white;
