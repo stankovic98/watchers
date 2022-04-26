@@ -1,15 +1,31 @@
 <main>
-    <h1>{{ video.name }}</h1>
-    <button class="small-button" routerLink=""><mat-icon>home</mat-icon></button>
-    <button class="small-button"><mat-icon>help_outline</mat-icon></button>
-    <button class="done-button">DONE <mat-icon>forward_arrow</mat-icon></button>
-    <app-yt-player [videoID]="video.id"></app-yt-player>
-    <textarea  placeholder="Enter your notes..." ></textarea>
-    <div class="timestamps">
-        <button>when is he talking about roses</button>
-        <button>talking about roses</button>
-        <button>Theme are roses</button>
-        <button>Roses</button>
-        <button>about roses</button>
-    </div>
+  <h1>{{ video.name }}</h1>
+  <button class="small-button" routerLink=""><mat-icon>home</mat-icon></button>
+  <button class="small-button" (click)="hidePopup.lessions = false">
+    <mat-icon>help_outline</mat-icon>
+  </button>
+  <button class="done-button">DONE <mat-icon>forward_arrow</mat-icon></button>
+  <app-yt-player [videoID]="video.id"></app-yt-player>
+  <textarea placeholder="Enter your notes..."></textarea>
+  <div class="timestamps">
+    <button>when is he talking about roses</button>
+    <button>talking about roses</button>
+    <button>Theme are roses</button>
+    <button>Roses</button>
+    <button>about roses</button>
+  </div>
 </main>
+<app-popup
+  [hidden]="hidePopup.lessions"
+  title="Hello"
+  (close)="hidePopup.lessions = true"
+>
+  <p>Here are some instructions on how to use this marvelouse program</p>
+</app-popup>
+<app-popup
+  [hidden]="hidePopup.done"
+  (close)="hidePopup.done = true"
+  title="Hello"
+>
+  <p>Here are some instructions on how to use this marvelouse program</p>
+</app-popup>

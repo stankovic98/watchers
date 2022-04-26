@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { VideoComponent } from './components/video/video.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { YtPlayerComponent } from './components/yt-player/yt-player.component';
+import { PopupComponent } from './components/popup/popup.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { YtPlayerComponent } from './components/yt-player/yt-player.component';
     WatchingStationComponent,
     VideoComponent,
     YtPlayerComponent,
+    PopupComponent,
   ],
   imports: [
     BrowserModule,

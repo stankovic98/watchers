@@ -1,0 +1,9 @@
+<div class="backdrop" (click)="closePopup()">
+  <div class="body" (click)="stopPropagation($event)">
+    <header>
+      <h1>{{ title }}</h1>
+      <mat-icon (click)="closePopup()">close</mat-icon>
+    </header>
+    <ng-content></ng-content>
+  </div>
+</div>
