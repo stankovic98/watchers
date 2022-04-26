@@ -2,9 +2,7 @@
     <h1>{{ video.name }}</h1>
     <button><mat-icon>help_outline</mat-icon></button>
     <button>DONE <mat-icon>forward_arrow</mat-icon></button>
-    <div #youTubePlayer class="player-container" >
-        <youtube-player [width]="videoWidth" [height]="videoHeight" [videoId]="video.id"></youtube-player>
-    </div>
+    <app-yt-player [videoID]="video.id"></app-yt-player>
     <input type="textarea" placeholder="Enter your notes">
     <div class="timestapms">
         <button>when is he talking about roses</button>

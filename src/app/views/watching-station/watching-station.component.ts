@@ -7,14 +7,10 @@ import { Video } from 'src/app/models/models';
   templateUrl: './watching-station.component.html',
   styleUrls: ['./watching-station.component.scss']
 })
-export class WatchingStationComponent implements OnInit, AfterViewInit {
-  @ViewChild('youTubePlayer') youTubePlayer: ElementRef<HTMLDivElement>;
+export class WatchingStationComponent implements OnInit {
   video: Video = {id: "", name: "", watched: false, endDate: new Date()}
-  videoHeight: number | undefined;
-  videoWidth: number | undefined;
-
-
-  constructor(private route: ActivatedRoute, private changeDetectorRef: ChangeDetectorRef) { }
+ 
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
@@ -24,18 +20,5 @@ export class WatchingStationComponent implements OnInit, AfterViewInit {
       this.video.endDate = new Date(params.get('endDate') || '');
       console.log(this.video)
     })
-  }
-
-  ngAfterViewInit(): void {
-    console.log(this.youTubePlayer.nativeElement.clientWidth)
-    this.onResize();
-    window.addEventListener('resize', this.onResize.bind(this));
-  }
-
-  onResize(): void {
-    console.log(this.youTubePlayer.nativeElement.clientWidth)
-    this.videoWidth = Math.min(this.youTubePlayer.nativeElement.clientWidth, 1200);
-    this.videoHeight = this.videoWidth * 0.6;
-    this.changeDetectorRef.detectChanges();
   }
 }
