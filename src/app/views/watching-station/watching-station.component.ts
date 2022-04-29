@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Video } from 'src/app/models/models';
+import { VideoService } from 'src/app/services/video.service';
 
 @Component({
   selector: 'app-watching-station',
@@ -24,14 +25,19 @@ export class WatchingStationComponent implements OnInit {
   };
   hidePopup = { lessions: true, done: true };
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private videoService: VideoService
+  ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      this.video.id = params.get('id') || '';
-      this.video.name = params.get('name') || '';
-      this.video.watched = Boolean(params.get('watched')) || false;
-      this.video.endDate = new Date(params.get('endDate') || '');
+      let id = params.get('id') || '';
+      this.getSelectedVideo(id);
     });
+  }
+
+  async getSelectedVideo(id: string) {
+    this.video = await this.videoService.getVideoByID(id);
   }
 }

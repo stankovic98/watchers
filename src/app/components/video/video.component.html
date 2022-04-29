@@ -5,6 +5,11 @@
   />
   <div class="overlay">
     <p>{{ video.name }}</p>
-    <button [routerLink]="['watch/' + video.id, video]">Watch <mat-icon aria-hidden="false" aria-label="Example home icon">arrow_forward</mat-icon></button>
+    <button [routerLink]="['watch/' + video.id]">
+      Watch
+      <mat-icon aria-hidden="false" aria-label="Example home icon"
+        >arrow_forward</mat-icon
+      >
+    </button>
   </div>
 </div>

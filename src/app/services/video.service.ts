@@ -27,4 +27,20 @@ export class VideoService {
     });
     return this.allVideos;
   }
+
+  getVideoByID(id: string): Video | Promise<Video> {
+    let emptyVid: Video = {
+      id: '',
+      name: '',
+      watched: false,
+      endDate: new Date(),
+      timestamps: [],
+    };
+    if (!this.allVideos) {
+      return this.getVideos().then((videos) => {
+        return videos.find((vid) => vid.id == id) || emptyVid;
+      });
+    }
+    return this.allVideos.find((vid) => vid.id == id) || emptyVid;
+  }
 }

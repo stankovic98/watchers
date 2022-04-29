@@ -15,17 +15,6 @@ export class HomeComponent implements OnInit {
   constructor(private videosService: VideoService) {}
 
   ngOnInit(): void {
-    // this.videosService.getVideos().subscribe((videos) => {
-    //   console.log(videos);
-    //   this.allVideos = videos.map((v) => {
-    //     return {
-    //       id: v.id,
-    //       name: v.name,
-    //       watched: v.watched,
-    //       endDate: new Date(v.endDate),
-    //       timestamps: v.timestamps,
-    //     };
-    //   });
     this.videosService.getVideos().then((res) => {
       this.allVideos = res;
       this.filteredVideos = this.allVideos;
