@@ -30,6 +30,7 @@ export class VideoComponent implements OnInit {
     name: '',
     watched: false,
     endDate: new Date(),
+    timestamps: [],
   };
 
   constructor() {}

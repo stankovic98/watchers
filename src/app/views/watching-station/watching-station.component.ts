@@ -15,7 +15,13 @@ import { Video } from 'src/app/models/models';
   styleUrls: ['./watching-station.component.scss'],
 })
 export class WatchingStationComponent implements OnInit {
-  video: Video = { id: '', name: '', watched: false, endDate: new Date() };
+  video: Video = {
+    id: '',
+    name: '',
+    watched: false,
+    endDate: new Date(),
+    timestamps: [],
+  };
   hidePopup = { lessions: true, done: true };
 
   constructor(private route: ActivatedRoute) {}
