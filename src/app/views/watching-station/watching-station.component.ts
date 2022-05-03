@@ -41,6 +41,10 @@ export class WatchingStationComponent implements OnInit {
     this.video = await this.videoService.getVideoByID(id);
   }
 
+  setVideoWatched() {
+    console.log('Video has been watched');
+  }
+
   toggleLessionsPopup(): void {
     this.hidePopup.lessions = !this.hidePopup.lessions;
     document.body.classList.toggle('my-body-noscroll-class');

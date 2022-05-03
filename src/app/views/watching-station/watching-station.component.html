@@ -5,7 +5,10 @@
     <mat-icon>help_outline</mat-icon>
   </button>
   <button class="done-button">DONE <mat-icon>forward_arrow</mat-icon></button>
-  <app-yt-player [videoID]="video.id"></app-yt-player>
+  <app-yt-player
+    [videoID]="video.id"
+    (videoWatched)="setVideoWatched()"
+  ></app-yt-player>
   <textarea placeholder="Enter your notes..."></textarea>
   <div class="timestamps">
     <button>when is he talking about roses</button>

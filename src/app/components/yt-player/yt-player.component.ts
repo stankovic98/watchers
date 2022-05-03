@@ -3,12 +3,11 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
   Input,
-  OnInit,
+  Output,
   ViewChild,
-  ViewRef,
 } from '@angular/core';
-import { throwIfEmpty } from 'rxjs';
 
 @Component({
   selector: 'app-yt-player',
@@ -16,6 +15,9 @@ import { throwIfEmpty } from 'rxjs';
   styleUrls: ['./yt-player.component.scss'],
 })
 export class YtPlayerComponent implements AfterViewInit {
+  @Input('videoID') videoID: string;
+  @Output('videoWatched') videoWatched: EventEmitter<any> = new EventEmitter();
+
   @ViewChild('youTubePlayerContainer')
   ytPlayerContainer: ElementRef<HTMLDivElement>;
   customPlayerVars: YT.PlayerVars = {
@@ -32,13 +34,16 @@ export class YtPlayerComponent implements AfterViewInit {
   videoHeight: number | undefined;
   videoWidth: number | undefined;
 
-  @Input('videoID') videoID: string;
-
   constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
   ngAfterViewInit(): void {
     this.onResize();
     window.addEventListener('resize', this.onResize.bind(this));
+    let savedWatchTime = localStorage.getItem('WATCH_TIME');
+    if (savedWatchTime) {
+      console.log('imamo watch time', savedWatchTime);
+      this.watchTime.percentageWatched = JSON.parse(savedWatchTime);
+    }
   }
 
   onResize(): void {
@@ -76,6 +81,21 @@ export class YtPlayerComponent implements AfterViewInit {
     for (let i = perStart; i < perStart + perDuration; i++) {
       this.watchTime.percentageWatched[i] *= -1;
     }
+    localStorage.setItem(
+      'WATCH_TIME',
+      JSON.stringify(this.watchTime.percentageWatched)
+    );
+    this.checkWatchedTime();
     console.log(this.watchTime.percentageWatched);
+  }
+
+  checkWatchedTime() {
+    let perWatched = this.watchTime.percentageWatched.filter(
+      (per) => per > 0
+    ).length;
+
+    if (perWatched > 80) {
+      this.videoWatched.emit();
+    }
   }
 }
