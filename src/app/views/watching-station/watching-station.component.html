@@ -1,7 +1,7 @@
 <main>
   <h1>{{ video.name }}</h1>
   <button class="small-button" routerLink=""><mat-icon>home</mat-icon></button>
-  <button class="small-button" (click)="hidePopup.lessions = false">
+  <button class="small-button" (click)="toggleLessionsPopup()">
     <mat-icon>help_outline</mat-icon>
   </button>
   <button class="done-button">DONE <mat-icon>forward_arrow</mat-icon></button>
@@ -18,9 +18,29 @@
 <app-popup
   [hidden]="hidePopup.lessions"
   title="Instructions"
-  (close)="hidePopup.lessions = true"
+  (close)="toggleLessionsPopup()"
 >
   <div class="instructions">
+    <p>
+      Watch the video assigned by the teacher. When the video starts talking
+      about the subjects that are written below the video, click on the button
+      and video will stop so you can write the notes about that.
+    </p>
+    <p>
+      After you have watched the <strong>whole</strong> video, you can once more
+      go over the notes and then click DONE button, and notes will be send to
+      teacher. After clicking DONE, the video will be counted as viewed.
+    </p>
+    <p>
+      Watch the video assigned by the teacher. When the video starts talking
+      about the subjects that are written below the video, click on the button
+      and video will stop so you can write the notes about that.
+    </p>
+    <p>
+      After you have watched the <strong>whole</strong> video, you can once more
+      go over the notes and then click DONE button, and notes will be send to
+      teacher. After clicking DONE, the video will be counted as viewed.
+    </p>
     <p>
       Watch the video assigned by the teacher. When the video starts talking
       about the subjects that are written below the video, click on the button
