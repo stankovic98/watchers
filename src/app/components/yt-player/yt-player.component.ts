@@ -41,7 +41,6 @@ export class YtPlayerComponent implements AfterViewInit {
     window.addEventListener('resize', this.onResize.bind(this));
     let savedWatchTime = localStorage.getItem('WATCH_TIME');
     if (savedWatchTime) {
-      console.log('imamo watch time', savedWatchTime);
       this.watchTime.percentageWatched = JSON.parse(savedWatchTime);
     }
   }
@@ -77,7 +76,6 @@ export class YtPlayerComponent implements AfterViewInit {
   changePerOfWatchedVideo(perStart: number, perDuration: number) {
     perStart = Math.floor(perStart * 100);
     perDuration = Math.floor(perDuration * 100);
-    console.log(perStart, perDuration);
     for (let i = perStart; i < perStart + perDuration; i++) {
       this.watchTime.percentageWatched[i] *= -1;
     }
@@ -85,17 +83,18 @@ export class YtPlayerComponent implements AfterViewInit {
       'WATCH_TIME',
       JSON.stringify(this.watchTime.percentageWatched)
     );
-    this.checkWatchedTime();
-    console.log(this.watchTime.percentageWatched);
+    this.isVideoWatched();
   }
 
-  checkWatchedTime() {
+  isVideoWatched(): boolean {
     let perWatched = this.watchTime.percentageWatched.filter(
       (per) => per > 0
     ).length;
 
     if (perWatched > 80) {
       this.videoWatched.emit();
+      return true;
     }
+    return false;
   }
 }

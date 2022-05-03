@@ -31,7 +31,6 @@ export class HomeComponent implements OnInit {
   }
 
   filterBySearchWord() {
-    console.log(this.searchWord);
     this.filteredVideos = this.allVideos.filter((vid) =>
       vid.name.toLowerCase().includes(this.searchWord.trim().toLowerCase())
     );
