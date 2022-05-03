@@ -4,6 +4,8 @@
       <h1>{{ title }}</h1>
       <mat-icon (click)="closePopup()">close</mat-icon>
     </header>
-    <ng-content></ng-content>
+    <div class="scrollable">
+      <ng-content></ng-content>
+    </div>
   </div>
 </div>
