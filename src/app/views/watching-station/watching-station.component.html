@@ -40,10 +40,13 @@
   </div>
 </app-popup>
 <app-popup [hidden]="hidePopup.done" (close)="toggleDonePopup()" title="Done">
-  <p *ngIf="video.watched; else elseBlock">
-    Good work! Teacher will be notified and happy for the effort you put into
-    your own learning and growing
-  </p>
+  <div *ngIf="video.watched; else elseBlock">
+    <p>
+      Good work! Teacher will be notified and happy for the effort you put into
+      your own learning and growing
+    </p>
+    <button (click)="goToHomePage()">Go to Home page</button>
+  </div>
   <ng-template #elseBlock>
     <p>
       Looks like you haven't watched enough of the video, please go back and

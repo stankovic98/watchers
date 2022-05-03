@@ -6,7 +6,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Video } from 'src/app/models/models';
 import { VideoService } from 'src/app/services/video.service';
 
@@ -27,6 +27,7 @@ export class WatchingStationComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private videoService: VideoService
   ) {}
 
@@ -43,6 +44,12 @@ export class WatchingStationComponent implements OnInit {
 
   setVideoWatched() {
     this.video.watched = true;
+    this.videoService
+      .setVideoToWatched(this.video)
+      .then(() => {
+        console.log('all okey');
+      })
+      .catch((err) => console.log);
   }
 
   toggleLessionsPopup(): void {
@@ -53,5 +60,10 @@ export class WatchingStationComponent implements OnInit {
   toggleDonePopup(): void {
     this.hidePopup.done = !this.hidePopup.done;
     document.body.classList.toggle('my-body-noscroll-class');
+  }
+
+  goToHomePage(): void {
+    document.body.classList.toggle('my-body-noscroll-class');
+    this.router.navigate(['/']);
   }
 }

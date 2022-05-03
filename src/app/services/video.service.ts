@@ -43,4 +43,11 @@ export class VideoService {
     }
     return this.allVideos.find((vid) => vid.id == id) || emptyVid;
   }
+
+  async setVideoToWatched(video: Video): Promise<boolean> {
+    return await true;
+    // return await firstValueFrom(
+    //   this.http.put(this.url + 'videos/' + video.id, { ...video })
+    // );
+  }
 }

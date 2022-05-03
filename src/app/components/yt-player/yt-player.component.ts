@@ -26,7 +26,7 @@ export class YtPlayerComponent implements AfterViewInit {
   };
 
   watchTime = {
-    percentageWatched: Array.from({ length: 100 }, (v, i) => -i),
+    percentageWatched: [0],
     start: 0,
     secondsToPercentage: 0,
     percentageStart: 0,
@@ -39,10 +39,7 @@ export class YtPlayerComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.onResize();
     window.addEventListener('resize', this.onResize.bind(this));
-    let savedWatchTime = localStorage.getItem('WATCH_TIME');
-    if (savedWatchTime) {
-      this.watchTime.percentageWatched = JSON.parse(savedWatchTime);
-    }
+    this.watchTime.percentageWatched = this.getSavedTime();
   }
 
   onResize(): void {
@@ -81,7 +78,10 @@ export class YtPlayerComponent implements AfterViewInit {
     }
     localStorage.setItem(
       'WATCH_TIME',
-      JSON.stringify(this.watchTime.percentageWatched)
+      JSON.stringify({
+        id: this.videoID,
+        time: this.watchTime.percentageWatched,
+      })
     );
     this.isVideoWatched();
   }
@@ -91,10 +91,21 @@ export class YtPlayerComponent implements AfterViewInit {
       (per) => per > 0
     ).length;
 
-    if (perWatched > 80) {
+    if (perWatched > 10) {
       this.videoWatched.emit();
       return true;
     }
     return false;
+  }
+
+  private getSavedTime(): number[] {
+    let savedWatchTime = localStorage.getItem('WATCH_TIME');
+    if (savedWatchTime) {
+      let savedWatchTimeObj = JSON.parse(savedWatchTime);
+      if (savedWatchTimeObj.id == this.videoID) {
+        return savedWatchTimeObj.time;
+      }
+    }
+    return Array.from({ length: 100 }, (v, i) => -i);
   }
 }
