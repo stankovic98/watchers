@@ -42,11 +42,16 @@ export class WatchingStationComponent implements OnInit {
   }
 
   setVideoWatched() {
-    console.log('Video has been watched');
+    this.video.watched = true;
   }
 
   toggleLessionsPopup(): void {
     this.hidePopup.lessions = !this.hidePopup.lessions;
+    document.body.classList.toggle('my-body-noscroll-class');
+  }
+
+  toggleDonePopup(): void {
+    this.hidePopup.done = !this.hidePopup.done;
     document.body.classList.toggle('my-body-noscroll-class');
   }
 }

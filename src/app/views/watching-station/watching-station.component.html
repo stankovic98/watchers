@@ -4,7 +4,9 @@
   <button class="small-button" (click)="toggleLessionsPopup()">
     <mat-icon>help_outline</mat-icon>
   </button>
-  <button class="done-button">DONE <mat-icon>forward_arrow</mat-icon></button>
+  <button class="done-button" (click)="toggleDonePopup()">
+    DONE <mat-icon>forward_arrow</mat-icon>
+  </button>
   <app-yt-player
     [videoID]="video.id"
     (videoWatched)="setVideoWatched()"
@@ -37,10 +39,15 @@
     <button (click)="toggleLessionsPopup()">OK</button>
   </div>
 </app-popup>
-<app-popup
-  [hidden]="hidePopup.done"
-  (close)="hidePopup.done = true"
-  title="Hello"
->
-  <p>Here are some instructions on how to use this marvelouse program</p>
+<app-popup [hidden]="hidePopup.done" (close)="toggleDonePopup()" title="Done">
+  <p *ngIf="video.watched; else elseBlock">
+    Good work! Teacher will be notified and happy for the effort you put into
+    your own learning and growing
+  </p>
+  <ng-template #elseBlock>
+    <p>
+      Looks like you haven't watched enough of the video, please go back and
+      watch the whole video.
+    </p>
+  </ng-template>
 </app-popup>
