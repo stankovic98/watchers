@@ -21,9 +21,10 @@ export class WatchingStationComponent implements OnInit {
     name: '',
     watched: false,
     endDate: new Date(),
-    timestamps: [],
+    themes: [],
   };
   hidePopup = { lessions: true, done: true };
+  player: YT.Player;
 
   constructor(
     private route: ActivatedRoute,
@@ -50,6 +51,22 @@ export class WatchingStationComponent implements OnInit {
         console.log('all okey');
       })
       .catch((err) => console.log);
+  }
+
+  themeClicked(id: string) {
+    let index = this.video.themes.findIndex((th) => th.id === id);
+    this.video.themes[index].isClicked = !this.video.themes[index].isClicked;
+    this.video.themes[index].userTimeStamp = this.player.getCurrentTime();
+    // call API on done
+    // this.videoService.themeClicked(
+    //   this.video.id,
+    //   id,
+    //   this.player.getCurrentTime()
+    // );
+  }
+
+  setYTPlayer(player: any) {
+    this.player = player;
   }
 
   toggleLessionsPopup(): void {

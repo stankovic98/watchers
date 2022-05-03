@@ -22,7 +22,7 @@ export class VideoService {
         name: v.name,
         watched: v.watched,
         endDate: new Date(v.endDate),
-        timestamps: v.timestamps,
+        themes: v.themes,
       };
     });
     return this.allVideos;
@@ -34,7 +34,7 @@ export class VideoService {
       name: '',
       watched: false,
       endDate: new Date(),
-      timestamps: [],
+      themes: [],
     };
     if (!this.allVideos) {
       return this.getVideos().then((videos) => {
@@ -42,6 +42,10 @@ export class VideoService {
       });
     }
     return this.allVideos.find((vid) => vid.id == id) || emptyVid;
+  }
+
+  themeClicked(vidID: string, themeID: string, time: number) {
+    // call backend
   }
 
   async setVideoToWatched(video: Video): Promise<boolean> {

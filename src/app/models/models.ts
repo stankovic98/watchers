@@ -3,12 +3,12 @@ export interface Video {
   name: string;
   watched: boolean;
   endDate: Date;
-  timestamps: Theme[];
+  themes: Theme[];
 }
 
 export interface Theme {
   id: string;
   text: string;
-  isClicked: string;
-  userTimeStamp: string;
+  isClicked: boolean;
+  userTimeStamp: number;
 }

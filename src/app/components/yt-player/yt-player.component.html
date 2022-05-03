@@ -5,5 +5,6 @@
     [videoId]="videoID"
     [playerVars]="customPlayerVars"
     (stateChange)="stateHasChanged($event)"
+    (ready)="giveRefToParent($event)"
   ></youtube-player>
 </div>

@@ -10,14 +10,17 @@
   <app-yt-player
     [videoID]="video.id"
     (videoWatched)="setVideoWatched()"
+    (ytPlayer)="player = $event"
   ></app-yt-player>
   <textarea placeholder="Enter your notes..."></textarea>
   <div class="timestamps">
-    <button>when is he talking about roses</button>
-    <button>talking about roses</button>
-    <button>Theme are roses</button>
-    <button>Roses</button>
-    <button>about roses</button>
+    <button
+      *ngFor="let theme of video.themes"
+      [ngClass]="{ 'clicked-theme': !theme.isClicked }"
+      (click)="themeClicked(theme.id)"
+    >
+      {{ theme.text }}
+    </button>
   </div>
 </main>
 <app-popup

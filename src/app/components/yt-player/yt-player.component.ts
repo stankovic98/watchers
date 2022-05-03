@@ -17,6 +17,7 @@ import {
 export class YtPlayerComponent implements AfterViewInit {
   @Input('videoID') videoID: string;
   @Output('videoWatched') videoWatched: EventEmitter<any> = new EventEmitter();
+  @Output('ytPlayer') ytPlayer: EventEmitter<YT.Player> = new EventEmitter();
 
   @ViewChild('youTubePlayerContainer')
   ytPlayerContainer: ElementRef<HTMLDivElement>;
@@ -107,5 +108,10 @@ export class YtPlayerComponent implements AfterViewInit {
       }
     }
     return Array.from({ length: 100 }, (v, i) => -i);
+  }
+
+  giveRefToParent(player: YT.PlayerEvent) {
+    console.log(player);
+    this.ytPlayer.emit(player.target);
   }
 }
