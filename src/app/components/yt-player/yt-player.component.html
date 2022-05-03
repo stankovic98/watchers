@@ -1,8 +1,11 @@
-<div #youTubePlayer class="player-container">
+<div #youTubePlayerContainer class="player-container">
   <youtube-player
+    #ytPlayer
     [width]="videoWidth"
     [height]="videoHeight"
     [videoId]="videoID"
     [playerVars]="customPlayerVars"
+    (stateChange)="stateHasChanged($event)"
+    (ready)="initWatchTime($event)"
   ></youtube-player>
 </div>
