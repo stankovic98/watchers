@@ -1,3 +1,8 @@
-<div #youTubePlayer class="player-container" >
-    <youtube-player [width]="videoWidth" [height]="videoHeight" [videoId]="videoID"></youtube-player>
+<div #youTubePlayer class="player-container">
+  <youtube-player
+    [width]="videoWidth"
+    [height]="videoHeight"
+    [videoId]="videoID"
+    [playerVars]="customPlayerVars"
+  ></youtube-player>
 </div>

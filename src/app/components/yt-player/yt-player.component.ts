@@ -15,6 +15,10 @@ import {
 })
 export class YtPlayerComponent implements AfterViewInit {
   @ViewChild('youTubePlayer') youTubePlayer: ElementRef<HTMLDivElement>;
+  customPlayerVars: YT.PlayerVars = {
+    modestbranding: 1,
+    rel: 0,
+  };
 
   videoHeight: number | undefined;
   videoWidth: number | undefined;
