@@ -39,7 +39,6 @@ export class YtPlayerComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.onResize();
     window.addEventListener('resize', this.onResize.bind(this));
-    console.log(this.watchTime.percentageWatched);
   }
 
   onResize(): void {
@@ -51,35 +50,26 @@ export class YtPlayerComponent implements AfterViewInit {
     this.changeDetectorRef.detectChanges();
   }
 
-  initWatchTime(e: YT.PlayerEvent) {
-    this.watchTime.secondsToPercentage = e.target.getDuration() / 100;
-  }
-
   stateHasChanged(onStateChange: YT.OnStateChangeEvent) {
     let player = onStateChange.target;
     if (player.getPlayerState() === YT.PlayerState.PLAYING) {
-      this.watchTime.start = new Date().getTime();
+      this.watchTime.start = player.getCurrentTime();
       this.watchTime.percentageStart =
         player.getCurrentTime() / player.getDuration();
     } else {
-      let timePassed = (new Date().getTime() - this.watchTime.start) / 1000;
+      let timePassed = player.getCurrentTime() - this.watchTime.start;
       if (timePassed > player.getDuration()) {
         timePassed = 0;
       }
       let percentagePassed = timePassed / player.getDuration();
-      // console.log('time passed: ', timePassed);
-      // console.log('percentage passed: ', percentagePassed);
-      // console.log('percentage start: ', this.watchTime.percentageStart);
-      this.changePercentageOfWatchedVideo(
+      this.changePerOfWatchedVideo(
         this.watchTime.percentageStart,
         percentagePassed
       );
     }
-
-    console.log('--------------------------------');
   }
 
-  changePercentageOfWatchedVideo(perStart: number, perDuration: number) {
+  changePerOfWatchedVideo(perStart: number, perDuration: number) {
     perStart = Math.floor(perStart * 100);
     perDuration = Math.floor(perDuration * 100);
     console.log(perStart, perDuration);
