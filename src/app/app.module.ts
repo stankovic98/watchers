@@ -10,7 +10,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './views/home/home.component';
 import { WatchingStationComponent } from './views/watching-station/watching-station.component';
 import { VideoService } from './services/video.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VideoComponent } from './components/video/video.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { YtPlayerComponent } from './components/yt-player/yt-player.component';
@@ -32,6 +32,7 @@ import { RegisterComponent } from './components/register/register.component';
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,

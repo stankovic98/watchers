@@ -7,11 +7,15 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  profileForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
+  loginForm = new FormGroup({
+    email: new FormControl(''),
+    password: new FormControl(''),
   });
   constructor() {}
 
   ngOnInit(): void {}
+
+  login() {
+    console.log(this.loginForm);
+  }
 }
