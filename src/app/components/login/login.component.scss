@@ -1,4 +1,4 @@
-$label: rgb(92, 92, 92);
+$label: rgb(128, 128, 128);
 
 form {
   width: 60%;
@@ -29,4 +29,15 @@ input {
   width: 60%;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
+}
+
+.submit:disabled {
+  color: $label;
+  border-color: $label;
+}
+
+.errors {
+  color: red;
+  text-align: left;
+  padding-top: 0.8rem;
 }

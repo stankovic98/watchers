@@ -15,5 +15,7 @@
   <label for="conf-password">Password: </label>
   <input id="conf-password" type="password" formControlName="confirmPassword" />
 
-  <button class="submit" type="submit">LOGIN</button>
+  <button class="submit" [disabled]="!registerForm.valid" type="submit">
+    LOGIN
+  </button>
 </form>

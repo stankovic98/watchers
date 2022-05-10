@@ -2,8 +2,33 @@
 <form [formGroup]="loginForm" (ngSubmit)="login()">
   <label for="email">Email: </label>
   <input id="email" type="email" formControlName="email" />
+  <div
+    *ngIf="loginForm.invalid && (loginForm.dirty || loginForm.touched)"
+    class="errors"
+  >
+    <div *ngIf="loginForm.controls?.['email']?.errors?.['required']">
+      Email is required.
+    </div>
+    <div *ngIf="loginForm.controls?.['email']?.errors?.['email']">
+      Format of the Email is wrong
+    </div>
+  </div>
 
   <label for="password">Password: </label>
   <input id="password" type="password" formControlName="password" />
-  <button class="submit" type="submit">LOGIN</button>
+  <div
+    *ngIf="loginForm.invalid && (loginForm.dirty || loginForm.touched)"
+    class="errors"
+  >
+    <div *ngIf="loginForm.controls?.['password']?.errors?.['required']">
+      You didn't enter password
+    </div>
+    <div *ngIf="loginForm.controls?.['password']?.errors?.['minlength']">
+      Password needs to be at least 3 characters long.
+    </div>
+  </div>
+
+  <button [disabled]="!loginForm.valid" class="submit" type="submit">
+    LOGIN
+  </button>
 </form>
