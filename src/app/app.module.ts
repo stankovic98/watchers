@@ -17,6 +17,7 @@ import { YtPlayerComponent } from './components/yt-player/yt-player.component';
 import { PopupComponent } from './components/popup/popup.component';
 import { AuthComponent } from './views/auth/auth.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { RegisterComponent } from './components/register/register.component';
     BrowserAnimationsModule,
     MatIconModule,
     YouTubePlayerModule,
+    ToastrModule.forRoot(),
   ],
   providers: [VideoService],
   bootstrap: [AppComponent],

@@ -7,6 +7,8 @@ import {
   AbstractControl,
   ValidationErrors,
 } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -44,11 +46,30 @@ export class RegisterComponent implements OnInit {
     },
     { validators: this.checkPasswords }
   );
-  constructor() {}
 
-  ngOnInit(): void {}
+  constructor(
+    private authService: AuthService,
+    private toastr: ToastrService
+  ) {}
+
+  ngOnInit(): void {
+    this.toastr.success('it works', 'Bravo');
+  }
 
   register() {
-    console.log(this.registerForm);
+    let user = this.registerForm.value;
+    this.authService
+      .registerUser({
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        password: user.password,
+      })
+      .then((res) => {
+        this.toastr.success('Success! Your account has been created');
+      })
+      .catch((err) => {
+        this.toastr.error(err.error.message || 'something went wrong');
+      });
   }
 }
