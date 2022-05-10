@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  ValidatorFn,
+  AbstractControl,
+  ValidationErrors,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -7,16 +14,41 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  registerForm = new FormGroup({
-    email: new FormControl(''),
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    password: new FormControl(''),
-    confirmPassword: new FormControl(''),
-  });
+  checkPasswords: ValidatorFn = (
+    group: AbstractControl
+  ): ValidationErrors | null => {
+    let pass = group.get('password')?.value;
+    let confirmPass = group.get('confirmPassword')?.value;
+
+    return pass === confirmPass ? null : { passwordsMismatch: true };
+  };
+
+  registerForm = new FormGroup(
+    {
+      email: new FormControl('', [Validators.required, Validators.email]),
+      firstName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.pattern('[a-zA-Z ]*'),
+      ]),
+      lastName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.pattern('[a-zA-Z ]*'),
+      ]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(6),
+      ]),
+      confirmPassword: new FormControl(''),
+    },
+    { validators: this.checkPasswords }
+  );
   constructor() {}
 
   ngOnInit(): void {}
 
-  register() {}
+  register() {
+    console.log(this.registerForm);
+  }
 }
