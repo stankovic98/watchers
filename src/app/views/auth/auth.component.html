@@ -1,0 +1,10 @@
+<div class="container">
+  <app-login *ngIf="isLogin"></app-login>
+  <app-register *ngIf="!isLogin"></app-register>
+  <button class="outline" (click)="toggleIsLogin()">
+    <span *ngIf="isLogin; else elseBlock"
+      >Don't have account? Register here!</span
+    >
+    <ng-template #elseBlock>Already have account? Login!</ng-template>
+  </button>
+</div>

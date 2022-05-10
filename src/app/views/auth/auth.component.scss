@@ -1,0 +1,18 @@
+@import "/src/assets/variables.scss";
+.container {
+  border: 1px solid black;
+  max-width: 80vw;
+  margin: 10vh auto;
+  text-align: center;
+}
+
+.outline {
+  text-decoration: underline;
+  border: 0;
+  font-size: 1.2rem;
+  letter-spacing: 1.2px;
+}
+
+.outline:hover {
+  color: $link;
+}
