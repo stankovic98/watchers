@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     let token = localStorage.getItem('jwt');
     if (token) {
-      this.auth.userIsAlreadyLoggedIn();
+      this.auth.userIsAlreadyLoggedIn(JSON.parse(token));
     }
   }
 }

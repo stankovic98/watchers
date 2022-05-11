@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminAuthGuard } from './auth/admin-auth.guard';
 import { UserAuthGuard } from './auth/user-auth.guard';
+import { AdminComponent } from './views/admin/admin.component';
 import { AuthComponent } from './views/auth/auth.component';
 import { ClassComponent } from './views/class/class.component';
 import { HomeComponent } from './views/home/home.component';
@@ -25,6 +27,11 @@ const routes: Routes = [
     path: 'class',
     component: ClassComponent,
     canActivate: [UserAuthGuard],
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [AdminAuthGuard],
   },
   {
     path: '**',

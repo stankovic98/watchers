@@ -21,6 +21,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { JwtInterceptor } from './auth/jwt.interceptor';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ClassComponent } from './views/class/class.component';
+import { AdminComponent } from './views/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ClassComponent } from './views/class/class.component';
     RegisterComponent,
     NavbarComponent,
     ClassComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
