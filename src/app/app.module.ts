@@ -20,6 +20,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { ToastrModule } from 'ngx-toastr';
 import { JwtInterceptor } from './auth/jwt.interceptor';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ClassComponent } from './views/class/class.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     AuthComponent,
     RegisterComponent,
     NavbarComponent,
+    ClassComponent,
   ],
   imports: [
     BrowserModule,

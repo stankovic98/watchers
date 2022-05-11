@@ -1,0 +1,18 @@
+@import "/src/assets/variables.scss";
+
+nav {
+  display: flex;
+  margin-left: $left-margin;
+  margin-right: $left-margin;
+  justify-content: space-between;
+}
+.nav-item {
+  border: 2px solid black;
+  padding: 10px;
+  margin: 10px;
+  color: black;
+}
+
+.active-link {
+  color: $link;
+}
