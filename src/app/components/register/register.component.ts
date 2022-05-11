@@ -52,9 +52,7 @@ export class RegisterComponent implements OnInit {
     private toastr: ToastrService
   ) {}
 
-  ngOnInit(): void {
-    this.toastr.success('it works', 'Bravo');
-  }
+  ngOnInit(): void {}
 
   register() {
     let user = this.registerForm.value;
