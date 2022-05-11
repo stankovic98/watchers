@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -18,6 +18,7 @@ import { PopupComponent } from './components/popup/popup.component';
 import { AuthComponent } from './views/auth/auth.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ToastrModule } from 'ngx-toastr';
+import { JwtInterceptor } from './auth/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,10 @@ import { ToastrModule } from 'ngx-toastr';
     YouTubePlayerModule,
     ToastrModule.forRoot(),
   ],
-  providers: [VideoService],
+  providers: [
+    VideoService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
