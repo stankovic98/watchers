@@ -26,6 +26,11 @@ export class AuthService {
     return firstValueFrom(this.http.post(this.url + '/register', user));
   }
 
+  userIsAlreadyLoggedIn() {
+    this.isAuthenticated = true;
+    this.router.navigate(['home']);
+  }
+
   logoutUser() {
     localStorage.removeItem('jwt');
     this.isAuthenticated = false;
