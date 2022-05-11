@@ -1,24 +1,36 @@
 <main>
-  <h1>Mandatory Videos</h1>
-  <p class="subtitle">
-    Videos should be watched by the end of the week or the teacher will be
-    notified
+  <p class="no-videos" *ngIf="allVideos.length == 0; else elseBlock">
+    It looks like you don't have any video to watch, add yourself to new class,
+    for new knowledge.
   </p>
-  <section class="mandatory-videos">
-    <app-video *ngFor="let video of mustWatchVids" [video]="video"></app-video>
-  </section>
-  <br />
-  <hr />
-  <h1>Explore</h1>
-  <p class="subtitle">Search for videos and get that precious knowledge</p>
-  <input
-    type="text"
-    class="search"
-    placeholder="Enter name of the video..."
-    [(ngModel)]="searchWord"
-    (ngModelChange)="filterBySearchWord()"
-  />
-  <section class="all-videos">
-    <app-video *ngFor="let video of filteredVideos" [video]="video"></app-video>
-  </section>
+  <ng-template #elseBlock>
+    <h1>Mandatory Videos</h1>
+    <p class="subtitle">
+      Videos should be watched by the end of the week or the teacher will be
+      notified
+    </p>
+    <section class="mandatory-videos">
+      <app-video
+        *ngFor="let video of mustWatchVids"
+        [video]="video"
+      ></app-video>
+    </section>
+    <br />
+    <hr />
+    <h1>Explore</h1>
+    <p class="subtitle">Search for videos and get that precious knowledge</p>
+    <input
+      type="text"
+      class="search"
+      placeholder="Enter name of the video..."
+      [(ngModel)]="searchWord"
+      (ngModelChange)="filterBySearchWord()"
+    />
+    <section class="all-videos">
+      <app-video
+        *ngFor="let video of filteredVideos"
+        [video]="video"
+      ></app-video>
+    </section>
+  </ng-template>
 </main>
