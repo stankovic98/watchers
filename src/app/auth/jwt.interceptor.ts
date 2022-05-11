@@ -20,12 +20,11 @@ export class JwtInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    // return next.handle(this.addJwtToken(request));
-    return next.handle(request).pipe(
+    return next.handle(this.addJwtToken(request)).pipe(
       catchError((requestError) => {
-        console.log(requestError);
         if (requestError.status == 401) {
           this.auth.logoutUser();
+          return throwError(() => new Error('unauthorized'));
         }
         return throwError(() => new Error(requestError));
       })

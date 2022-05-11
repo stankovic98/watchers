@@ -41,11 +41,12 @@ export class AuthService {
           localStorage.setItem('jwt', res?.jwt);
           this.isAuthenticated = true;
           this.router.navigate(['/home']);
+        } else {
+          this.toastr.error(
+            'Please check if your credentials are valid',
+            'Uppsss'
+          );
         }
-        this.toastr.error(
-          'Please check if your credentials are valid',
-          'Uppsss'
-        );
       })
       .catch((err) => {
         console.log('/login', err);
