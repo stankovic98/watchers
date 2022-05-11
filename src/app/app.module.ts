@@ -19,6 +19,7 @@ import { AuthComponent } from './views/auth/auth.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ToastrModule } from 'ngx-toastr';
 import { JwtInterceptor } from './auth/jwt.interceptor';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { JwtInterceptor } from './auth/jwt.interceptor';
     PopupComponent,
     AuthComponent,
     RegisterComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
